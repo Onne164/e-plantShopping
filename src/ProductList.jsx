@@ -349,7 +349,7 @@ function ProductList() {
                   ></path>
                 </svg>
                 {totalQuantity > 0 && (
-                  <span className="cart-count">{totalQuantity}</span>
+                  <span className="cart_quantity_count">{totalQuantity}</span>
                 )}
               </h1>
             </a>
