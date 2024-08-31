@@ -4,7 +4,10 @@ import "./AboutUs.css";
 function AboutUs() {
   return (
     <div className="about-us-container">
-      <h1 className="about-us-heading">Welcome to e-Plant Herbaticum</h1> *
+      <h1 className="about-us-heading">
+        Discover Nature’s Best for Your Health and Beauty
+      </h1>{" "}
+      *
       {/*   <p className="about-us-description">Unlock Nature’s Secrets for Health and Beauty!</p> */}
       <p className="about-us-content">
         Our online store is your trusted source for high-quality herbal

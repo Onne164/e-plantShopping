@@ -283,7 +283,13 @@ function ProductList() {
       [plant.name]: true,
     }));
   };
-
+  const handleRemoveFromCart = (plant) => {
+    dispatch(removeItem(plant));
+    setAddedToCart((prevState) => ({
+      ...prevState,
+      [plant.name]: false,
+    }));
+  };
   const handleCartClick = (e) => {
     e.preventDefault();
     setShowCart(true);
@@ -311,8 +317,8 @@ function ProductList() {
             />
             <a href="/" style={{ textDecoration: "none" }}>
               <div>
-                <h3 style={{ color: "white" }}>Paradise Nursery</h3>
-                <i style={{ color: "white" }}>Where Green Meets Serenity</i>
+                <h3 style={{ color: "white" }}>e-Plant Herbaticum</h3>
+                <i style={{ color: "white" }}>Harness the Power of Plants</i>
               </div>
             </a>
           </div>
@@ -321,7 +327,7 @@ function ProductList() {
           <div>
             {" "}
             <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>
-              Plants
+              Houseplants for Sale
             </a>
           </div>
           <div>
@@ -348,9 +354,7 @@ function ProductList() {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
-                {totalQuantity > 0 && (
-                  <span className="cart_quantity_count">{totalQuantity}</span>
-                )}
+                <span className="cart_quantity_count">{totalQuantity}</span>
               </h1>
             </a>
           </div>
@@ -361,8 +365,9 @@ function ProductList() {
           {plantsArray.map((category, index) => (
             <div key={index}>
               <h1>
-                <div>{category.category}</div>
+                <div class="centered-category">{category.category}</div>
               </h1>
+
               <div className="product-list">
                 {category.plants.map((plant, plantIndex) => (
                   <div className="product-card" key={plantIndex}>
@@ -380,8 +385,11 @@ function ProductList() {
                     <button
                       className="product-button"
                       onClick={() => handleAddToCart(plant)}
+                      disabled={addedToCart[plant.name]} // Disable button if plant is added
                     >
-                      Add to Cart
+                      {addedToCart[plant.name]
+                        ? "Added to Cart"
+                        : "Add to Cart"}
                     </button>
                   </div>
                 ))}
